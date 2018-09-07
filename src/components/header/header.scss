@@ -1,11 +1,12 @@
-@import '../../style/tools/_colors.scss';
+@import '../../style/tools/sizes';
+@import '../../style/tools/colors';
 
 .header {
   align-items: center;
   background-color: $color-primary;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
   display: flex;
-  height: 60px;
+  height: $header-height;
   justify-content: space-between;
   padding: 0 300px;
   width: 100%;

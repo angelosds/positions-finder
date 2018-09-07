@@ -1,0 +1,30 @@
+@import '../../style/tools/sizes';
+
+.search {
+  align-items: center;
+  background-color: rgba(255, 255, 255, .32);
+  border-radius: 3px;
+  display: flex;
+  margin: 0 $hallf-gutter;
+  max-width: 600px;
+  width: 100%;
+
+  &__icon {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    height: $search-height;
+    justify-content: center;
+    width: $search-height;
+  }
+
+  &__field {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 1.4rem;
+    height: $search-height;
+    padding: 0 5px;
+    width: calc(100% - #{$search-height});
+  }
+}
