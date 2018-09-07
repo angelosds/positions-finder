@@ -5,7 +5,6 @@
   background-color: rgba(255, 255, 255, .32);
   border-radius: 3px;
   display: flex;
-  margin: 0 $hallf-gutter;
   max-width: 600px;
   width: 100%;
 
@@ -26,5 +25,14 @@
     height: $search-height;
     padding: 0 5px;
     width: calc(100% - #{$search-height});
+    -webkit-appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: rgba(#fff, .5);
+    }
   }
 }

@@ -1,3 +1,5 @@
+@import '../../style/tools/sizes';
+
 $toggle-height: 20px;
 
 .toggle {
@@ -5,6 +7,7 @@ $toggle-height: 20px;
 
   cursor: pointer;
   height: $toggle-height;
+  margin: 0 $half-gutter;
   position: relative;
   width: 40px;
 
