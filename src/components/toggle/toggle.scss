@@ -1,0 +1,93 @@
+$toggle-height: 20px;
+
+.toggle {
+  $root: &;
+
+  cursor: pointer;
+  height: $toggle-height;
+  position: relative;
+  width: 40px;
+
+  &__check {
+    opacity: 0;
+
+    &:hover {
+      @at-root {
+        & + #{$root}__bg #{$root}__icon:before {
+          box-shadow: 0 0 0 10px rgba(#000, .05);
+        }
+      }
+    }
+
+    &:focus {
+      @at-root {
+        & + #{$root}__bg #{$root}__icon:before {
+          box-shadow: 0 0 0 10px rgba(#000, .1);
+        }
+      }
+    }
+
+    &:hover,
+    &:checked {
+      @at-root {
+        & + #{$root}__bg #{$root}__icon {
+          background-color: #fff;
+          color: #ac50fd;
+        }
+      }
+    }
+
+    &:checked {
+      @at-root {
+        & + #{$root}__bg {
+          background-color: rgba(#fff, .5);
+
+          & #{$root}__icon {
+            transform: translateX(22px);
+          }
+        }
+      }
+    }
+  }
+
+  &__bg {
+    background-color: rgba(#000, .2);
+    border-radius: 14px;
+    height: 14px;
+    left: 0;
+    position: absolute;
+    top: 3px;
+    transition: .15 background-color linear;
+    width: 32px;
+  }
+
+  &__icon {
+    align-items: center;
+    background-color: #ac50fd;
+    border-radius: $toggle-height;
+    box-shadow: 0 2px 3px 0 rgba(#000, .3);
+    color: #fff;
+    display: flex;
+    font-size: 14px;
+    height: $toggle-height;
+    justify-content: center;
+    left: -5px;
+    pointer-events: none;
+    position: absolute;
+    top: -3px;
+    transition: .15s transform, .15s color, .15s background-color linear;
+    width: $toggle-height;
+
+    &:before {
+      border-radius: 20px;
+      box-shadow: 0 0 0 0 rgba(#000, 0);
+      content: '';
+      height: 20px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transition: .15s box-shadow ease-out;
+      width: 20px;
+    }
+  }
+}
