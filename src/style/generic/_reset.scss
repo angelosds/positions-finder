@@ -1,0 +1,20 @@
+/**
+ * Adjust global styles to be same in major browsers
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: #f0f0f0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
