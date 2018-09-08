@@ -11,8 +11,8 @@ class Header extends Component {
         <a>
           <img className="header__logo" src="/assets/images/logo.svg" alt="Kenoby" />
         </a>
-        <Search />
-        <Toggle />
+        <Search onType={this.props.onFilter} />
+        <Toggle onChange={this.props.onFavoritesToggle} />
         <img className="header__avatar" src="/assets/images/avatar.png" alt="Avatar" />
       </header>
     )

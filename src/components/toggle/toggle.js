@@ -5,7 +5,7 @@ class Toggle extends Component {
   render() {
     return (
       <label className="toggle" title="Exibir favoritos">
-        <input className="toggle__check" type="checkbox" />
+        <input className="toggle__check" type="checkbox" onChange={(e) => this.props.onChange(e.target.checked)} />
         <span className="toggle__bg material-icons"><span className="toggle__icon star">star</span></span>
       </label>
     );
