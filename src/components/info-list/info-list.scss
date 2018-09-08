@@ -1,0 +1,14 @@
+@import '../../style/tools/sizes';
+
+.info-list {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 940px;
+  width: 100%;
+
+  @media screen and (min-width: 769px) {
+    border-radius: 3px;
+    margin-bottom: $gutter;
+    margin-top: $gutter;
+  }
+}
