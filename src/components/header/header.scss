@@ -8,10 +8,12 @@
   display: flex;
   height: $header-height;
   justify-content: center;
+  left: 0;
   padding: 0 $half-gutter;
-  position: relative;
+  position: fixed;
+  top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 100;
 
   &__logo {
     height: 32px;

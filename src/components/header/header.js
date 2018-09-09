@@ -8,9 +8,7 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <a>
-          <img className="header__logo" src="/assets/images/logo.svg" alt="Kenoby" />
-        </a>
+        <img className="header__logo" src="/assets/images/logo.svg" alt="Kenoby" />
         <Search onType={this.props.onFilter} />
         <Toggle onChange={this.props.onFavoritesToggle} />
         <img className="header__avatar" src="/assets/images/avatar.png" alt="Avatar" />

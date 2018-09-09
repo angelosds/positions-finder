@@ -2,6 +2,7 @@
  * Adjust global styles to be same in major browsers
  */
 
+@import '../tools/sizes';
 @import '../tools/typography';
 
 * {
@@ -19,5 +20,5 @@ body {
   font-size: 1.4rem;
   font-weight: 400;
   margin: 0;
-  padding: 0;
+  padding: $header-height 0 0 0;
 }
