@@ -67,6 +67,8 @@ class InfoCard extends Component {
 
     position.isFavorite = !position.isFavorite;
 
+    this.props.onAlert(`Vaga ${position.isFavorite ? 'adicionada às' : 'removida das'} favoritas`);
+
     this.setState({
       position: position
     }, () => {
@@ -74,7 +76,7 @@ class InfoCard extends Component {
     });
   }
   positionJoin() {
-    this.props.onAlert(`Você se inscreveu no processo seletivo para a vaga "${this.state.position.title}" com sucesso! Em breve entraremos em contato.`);
+    this.props.onAlert(`Você se inscreveu no processo seletivo para a vaga "${this.state.position.title}" com sucesso! Em breve entraremos em contato`);
   }
 }
 

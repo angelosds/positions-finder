@@ -12,6 +12,8 @@ class InfoList extends Component {
       positions: []
     };
 
+    this.alertTimeout;
+
     this.showAlert = this.showAlert.bind(this);
   }
   render() {
@@ -37,11 +39,15 @@ class InfoList extends Component {
     }
   }
   showAlert(message) {
+    if (this.alertTimeout !== undefined) {
+      clearTimeout(this.alertTimeout);
+    }
+
     this.setState({
       alert: message
     });
 
-    setTimeout(() => {
+    this.alertTimeout = setTimeout(() => {
       this.setState({
         alert: null
       });
