@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.scss';
 
 import Header from './components/header/header';
 import InfoList from './components/info-list/info-list';
@@ -10,6 +11,7 @@ class App extends Component {
     this.positions = [];
 
     this.state = {
+      isLoading: true,
       positions: [],
       onlyFavorites: false,
       query: ''
@@ -23,11 +25,23 @@ class App extends Component {
     this.getPositions();
   }
   render() {
+    const content = this.state.isLoading ? this.renderLoader() : this.renderList();
+
     return (
       <div className="App">
         <Header onFavoritesToggle={this.onFavoritesToggle} onFilter={this.onFilter} />
-        <InfoList positions={this.state.positions} onFavoriteToggle={this.onFavoriteToggle} />
+        {content}
       </div>
+    );
+  }
+  renderLoader() {
+    return (
+      <span title="Carregando vagas" className="loader"></span>
+    );
+  }
+  renderList() {
+    return (
+      <InfoList positions={this.state.positions} onFavoriteToggle={this.onFavoriteToggle} />
     );
   }
   onFavoritesToggle(checked) {
@@ -82,8 +96,8 @@ class App extends Component {
           };
         });
 
-        this.setState({
-          positions: this.positions
+        this.setState({ isLoading: false }, () => {
+          this.setState({ positions: this.positions })
         });
       }
     });

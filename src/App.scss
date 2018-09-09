@@ -1,0 +1,18 @@
+@import './style/tools/colors';
+@import './style/tools/sizes';
+
+$loader-size: 40px;
+$loader-border-size: 3px;
+
+.loader {
+  animation: .6s spin infinite, .2s fade ease-out;
+  border-bottom: $loader-border-size solid transparent;
+  border-left: $loader-border-size solid $color-secondary;
+  border-right: $loader-border-size solid $color-secondary;
+  border-top: $loader-border-size solid $color-secondary;
+  border-radius: $loader-size;
+  display: block;
+  height: $loader-size;
+  margin: $gutter auto;
+  width: $loader-size;
+}
