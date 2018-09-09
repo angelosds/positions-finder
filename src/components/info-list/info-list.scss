@@ -12,3 +12,15 @@
     margin-top: $gutter;
   }
 }
+
+.message {
+  margin-top: 50px;
+  opacity: .5;
+  text-align: center;
+
+  &__icon {
+    display: block;
+    font-size: 80px;
+    opacity: .3;
+  }
+}

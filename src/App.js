@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.scss';
 
 import Header from './components/header/header';
 import InfoList from './components/info-list/info-list';
@@ -8,32 +7,58 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      positions: []
-    }
-
     this.positions = [];
+
+    this.state = {
+      positions: [],
+      onlyFavorites: false,
+      query: ''
+    }
 
     this.onFavoritesToggle = this.onFavoritesToggle.bind(this);
     this.onFilter = this.onFilter.bind(this);
+    this.onFavoriteToggle = this.onFavoriteToggle.bind(this);
+    this.filterPositions = this.filterPositions.bind(this);
+
     this.getPositions();
   }
   render() {
     return (
       <div className="App">
         <Header onFavoritesToggle={this.onFavoritesToggle} onFilter={this.onFilter} />
-        <InfoList positions={this.state.positions} />
+        <InfoList positions={this.state.positions} onFavoriteToggle={this.onFavoriteToggle} />
       </div>
     );
   }
   onFavoritesToggle(checked) {
     this.setState({
-      positions: this.positions.filter(position => position.isFavorite === checked)
-    });
+      onlyFavorites: checked
+    }, this.filterPositions);
   }
   onFilter(value) {
     this.setState({
-      positions: this.positions.filter(position => position.title.toLowerCase().indexOf(value.toLowerCase()) >= 0)
+      query: value.toLowerCase()
+    }, this.filterPositions);
+  }
+  onFavoriteToggle(id, isFavorite) {
+    this.positions = this.positions.map(position => {
+      if (position.id === id) position.isFavorite = isFavorite;
+
+      return position;
+    });
+
+    this.setState({
+      position: this.positions
+    });
+  }
+  filterPositions() {
+    this.setState({
+      positions: this.positions.filter(position => {
+        const onQuery = position.title.toLowerCase().indexOf(this.state.query) >= 0;
+        const onFavorite = this.state.onlyFavorites ? position.isFavorite : true;
+
+        return onQuery && onFavorite;
+      })
     });
   }
   getPositions() {
@@ -52,7 +77,7 @@ class App extends Component {
           return {
             id: position._id,
             title: position.name,
-            description: position.description,
+            __html: position.description,
             isFavorite: false
           };
         });

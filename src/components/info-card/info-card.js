@@ -7,7 +7,7 @@ class InfoCard extends Component {
 
     this.state = {
       isActive: false,
-      isFavorite: false
+      position: this.props.position
     };
 
     this.toggleActive = this.toggleActive.bind(this);
@@ -21,22 +21,20 @@ class InfoCard extends Component {
             <input className="info-card__input" name="vagas" type="checkbox" onChange={this.toggleActive} />
             <span className="info-card__bg"></span>
             <div className="info-card__group">
-              <h1 className="info-card__title">Desenvolvedor Front End</h1>
+              <h1 className="info-card__title">{this.props.position.title}</h1>
               <button
                 type="button"
-                title={(this.state.isFavorite ? 'Remover de' : 'Adicionar à') + ' vagas favoritas'}
-                className={'info-card__like' + (this.state.isFavorite ? ' info-card__like--active' : '')}
+                title={(this.state.position.isFavorite ? 'Remover de' : 'Adicionar à') + ' vagas favoritas'}
+                className={'info-card__like' + (this.state.position.isFavorite ? ' info-card__like--active' : '')}
                 onClick={this.toggleFavorite}>
-                  <span className="info-card__star material-icons">{this.state.isFavorite ? 'star' : 'star_border'}</span>
+                  <span className="info-card__star material-icons">{this.state.position.isFavorite ? 'star' : 'star_border'}</span>
               </button>
             </div>
             <span className="info-card__arrow material-icons">keyboard_arrow_down</span>
           </label>
         </header>
         <div className="info-card__content" ref={(content) => this.content = content}>
-          <div className="info-card__inner">
-            Se o seu cotidiano é estar ao lados dos <strong>times de produto e tecnologia</strong> para criar experiências que geram valor, venha para a equipe de produto do Kenoby.
-          </div>
+          <div className="info-card__inner" dangerouslySetInnerHTML={this.props.position}></div>
         </div>
       </article>
     );
@@ -61,9 +59,15 @@ class InfoCard extends Component {
     }));
   }
   toggleFavorite() {
-    this.setState(state => ({
-      isFavorite: !state.isFavorite
-    }));
+    const position = this.state.position;
+
+    position.isFavorite = !position.isFavorite;
+
+    this.setState({
+      position: position
+    }, () => {
+      this.props.onFavoriteToggle(this.state.position.id, this.state.position.isFavorite);
+    });
   }
 }
 

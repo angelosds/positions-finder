@@ -18,15 +18,15 @@ class InfoList extends Component {
       </section>
     );
   }
-  componentWillReceiveProps(data) {
-    this.setState(data);
-  }
   getContent() {
     if (this.state.positions.length === 0) {
-      return <p>Não há vagas para os critérios informados.</p>
+      return <p className="message"><i className="message__icon material-icons">search</i>Não há vagas para os critérios informados.</p>
     } else {
-      return this.state.positions.map((position) => <InfoCard key={position.id} position={position} />);
+      return this.state.positions.map((position) => <InfoCard key={position.id} position={position} onFavoriteToggle={this.props.onFavoriteToggle} />);
     }
+  }
+  componentWillReceiveProps(data) {
+    this.setState(data);
   }
 }
 
