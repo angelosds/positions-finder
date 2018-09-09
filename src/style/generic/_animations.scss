@@ -11,3 +11,8 @@
   from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+
+@keyframes alert {
+  from { transform: translateY(20px); }
+    to { transform: translateY(0); }
+}

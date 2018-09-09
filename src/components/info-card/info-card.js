@@ -12,6 +12,7 @@ class InfoCard extends Component {
 
     this.toggleActive = this.toggleActive.bind(this);
     this.toggleFavorite = this.toggleFavorite.bind(this);
+    this.positionJoin = this.positionJoin.bind(this);
   }
   render() {
     return (
@@ -34,7 +35,10 @@ class InfoCard extends Component {
           </label>
         </header>
         <div className="info-card__content" ref={(content) => this.content = content}>
-          <div className="info-card__inner" dangerouslySetInnerHTML={this.props.position}></div>
+          <div className="info-card__inner">
+            <div dangerouslySetInnerHTML={this.props.position}></div>
+            <button className="info-card__button" onClick={this.positionJoin}>Candidate-se</button>
+          </div>
         </div>
       </article>
     );
@@ -68,6 +72,9 @@ class InfoCard extends Component {
     }, () => {
       this.props.onFavoriteToggle(this.state.position.id, this.state.position.isFavorite);
     });
+  }
+  positionJoin() {
+    this.props.onAlert(`Você se inscreveu no processo seletivo para a vaga "${this.state.position.title}" com sucesso! Em breve entraremos em contato.`);
   }
 }
 

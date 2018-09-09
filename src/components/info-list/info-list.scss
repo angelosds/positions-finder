@@ -24,3 +24,20 @@
     opacity: .3;
   }
 }
+
+.alert {
+  animation: .2s alert ease-out;
+  background-color: #323232;
+  bottom: $half-gutter;
+  border-radius: 3px;
+  color: #fff;
+  left: $half-gutter;
+  line-height: 1.8rem;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: $half-gutter;
+  position: fixed;
+  right: $half-gutter;
+  width: calc(100% - $gutter);
+  z-index: 100;
+}
