@@ -7,9 +7,16 @@ $toggle-height: 20px;
 
   cursor: pointer;
   height: $toggle-height;
-  margin: 0 $half-gutter;
   position: relative;
   width: 40px;
+
+  @media screen and (max-width: 768px) {
+    margin: 0 $half-gutter;
+  }
+
+  @media screen and (min-width: 769px) {
+    margin: 0 $gutter;
+  }
 
   &__check {
     opacity: 0;
